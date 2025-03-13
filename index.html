@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- 引入 Google Fonts，使用 Yuji Boku&Montserrat 字體 -->
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@900&family=Yuji+Boku&display=swap">
+  <title>審神者就任日計時器</title>
+  <style>
+    /* 計時器的外框樣式 */
+    #timer {
+      color: #591818; /* 文字顏色 */
+      text-align: center; /* 讓內容置中 */
+      text-transform: uppercase; /* 文字轉大寫 */
+      font-family: 'Yuji Boku', serif; /* 日本風格字體 */
+      font-size: .7em; /* 縮小字體 */
+      letter-spacing: 5px; /* 增加字母間距 */
+      width: 250px; /* 設定計時器容器的寬度 */
+      border-radius: 20px; /* 讓外框邊角圓滑 */
+      padding: 5px; /* 內部間距 */
+    }
+
+    /* 內部區塊 .days 的樣式=粉紅底*/
+    .days {
+      display: inline-block; /* 讓元素變成內聯區塊 */
+      padding: 10px; /* 內距 */
+      width: 250px; /* 設定區塊寬度 */
+      border-radius: 5px; /* 讓區塊邊角圓滑 */
+      background: #D7C1C1; /* 設定背景顏色 */
+    }
+
+    /* 設定顯示數字的樣式 */
+    .numbers {
+      font-family: 'Montserrat', serif; /* 使用相同的字體 */
+      color: #9F3232; /* 設定顏色 */
+      font-size: 4em; /* 放大數字 */
+      text-align: center; /* 讓文字置中 */
+    }
+
+    /* 設定標題(審神者就任日)的樣式 */
+    .startText {
+      font-family: 'Yuji Boku', serif; /* 使用相同的字體 */
+      font-size: 3em; /* 調整字體大小 */
+      color: #591818; /* 設定顏色 */
+      text-align: center; /* 讓文字置中 */
+      margin-top: 10px; /* 上邊距 10px */
+      margin-bottom: 5px; /* 下邊距 10px */
+    }
+  </style>
+</head>
+<body>
+
+<!-- 計時器外框 -->
+<div id="timer">
+  <!-- 內部區塊 .days，包含標題與天數 -->
+  <div class="days">
+    <p class="startText">審神者就任日</p> <!-- 標題文字 -->
+
+    <!-- 顯示天數的數字 -->
+    <div id="days" class="numbers"></div>days
+  </div>
+</div>
+
+</body>
+<script>
+  // ！！動這裡就好！！設定起始日期（2015 年 3 月 10 日，月份從 0 開始所以 2 = 3 月）
+  let startTime = new Date(2015, 2, 10).getTime();
+
+  // 每秒更新一次計時器
+  let timer = setInterval(function() {
+    const now = new Date().getTime(); // 取得現在時間（毫秒）
+    const diff = now - startTime; // 計算時間差（毫秒）
+
+    let days = Math.floor(diff / (1000 * 60 * 60 * 24)); // 換算成天數
+
+    document.getElementById("days").innerHTML = days; // 更新頁面上的數字
+  }, 1000); // 每 1000 毫秒（1 秒）更新一次
+</script> 
+</html>
